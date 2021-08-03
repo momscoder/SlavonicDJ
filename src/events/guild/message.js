@@ -11,5 +11,10 @@ module.exports = (Discord, client, message) => {
     client.commands.get(cmd) ||
     client.commands.find((x) => x.aliases && x.aliases.includes(cmd));
 
-  if (command) command.execute(client, message, args, Discord);
+  try {
+    command.execute(message, args, cmd, client, Discord);
+  } catch (err) {
+    message.reply("Ошибка исполнения команды :(");
+    console.log(err); //TODO: logger
+  }
 };
