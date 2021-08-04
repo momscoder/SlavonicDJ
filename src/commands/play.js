@@ -8,7 +8,7 @@ module.exports = {
     //standard checks
     const voice_channel = message.member.voice.channel;
     if (!voice_channel)
-      return message.channel.send(
+      return message.reply(
         "Вы должны находиться в голосовом канале для использования этой команды!"
       );
     const permissions = voice_channel.permissionsFor(message.client.user);
@@ -27,7 +27,7 @@ module.exports = {
       selfDeafen: true,
     });
 
-    if (!args.length && !player.queue.length) {
+    if (!args.length && !player.paused) {
       return message.channel.send("...");
     }
 
@@ -78,7 +78,7 @@ module.exports = {
           player.play();
 
         return message.channel.send(
-          `Песня '${res.tracks[0].title}' добавлена в очередь!`
+          `Песня **${res.tracks[0].title}** добавлена в очередь!`
         );
     }
   },
