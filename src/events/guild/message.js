@@ -11,6 +11,8 @@ module.exports = (Discord, client, message) => {
     client.commands.get(cmd) ||
     client.commands.find((x) => x.aliases && x.aliases.includes(cmd));
 
+  if (!command) return message.reply("Такой команды нет!");
+
   try {
     command.execute(message, args, cmd, client, Discord);
   } catch (err) {
