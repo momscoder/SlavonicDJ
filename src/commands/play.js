@@ -26,6 +26,7 @@ module.exports = {
       let song = {};
 
       song = await vkdl.findByTitle(args.join(" "));
+      if (!song) return message.channel.send("Ничего не найдено");
 
       if (!server_queue) {
         const queue_constructor = {
