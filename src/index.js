@@ -14,6 +14,7 @@ const nodes = [
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
+client.timers = new Discord.Collection();
 
 client.manager = new Manager({
   nodes,
