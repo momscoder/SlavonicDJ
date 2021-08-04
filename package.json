@@ -4,7 +4,8 @@
   "description": "discord vk music bot",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
     "@discordjs/opus": "^0.5.3",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
+    "erela.js": "^2.3.3",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
