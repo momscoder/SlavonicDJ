@@ -73,6 +73,7 @@ module.exports = {
       case "TRACK_LOADED":
         res.tracks[0].title = song.title;
         res.tracks[0].requester = message.author;
+        res.tracks[0].duration = song.duration;
 
         player.queue.add(res.tracks[0]);
 
