@@ -22,6 +22,7 @@ async function get(title) {
   const json = await response.json();
   return {
     title: json.response?.items?.[0]?.title,
+    duration: +json.response?.items?.[0]?.duration * 1000,
     id: json.response?.items?.[0]?.ads?.content_id,
   };
 }
@@ -36,6 +37,10 @@ async function getById(id, createObject = false) {
   );
   const json = await response.json();
   return createObject
-    ? { title: json.response?.[0]?.title, url: json.response?.[0]?.url }
+    ? {
+        title: json.response?.[0]?.title,
+        url: json.response?.[0]?.url,
+        duration: +json.response?.[0]?.duration * 1000,
+      }
     : json.response?.[0]?.url;
 }
