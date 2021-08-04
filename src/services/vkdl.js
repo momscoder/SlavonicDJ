@@ -30,7 +30,9 @@ async function getById(id, createObject = false) {
   if (!id) return null;
 
   const response = await fetch(
-    `https://api.vk.com/method/audio.getById?access_token=${process.env.VK_TOKEN}&audios=${id}&v=5.95`
+    `https://api.vk.com/method/audio.getById?access_token=${
+      process.env.VK_TOKEN
+    }&audios=${encodeURIComponent(id)}&v=5.95`
   );
   const json = await response.json();
   return createObject

@@ -7,7 +7,7 @@ const nodes = [
   {
     host: process.env.LAVA_HOST,
     password: process.env.LAVA_PASS,
-    port: parseInt(process.env.LAVA_PORT),
+    port: +process.env.LAVA_PORT,
   },
 ];
 
@@ -22,6 +22,7 @@ client.manager = new Manager({
     const guild = client.guilds.cache.get(id);
     if (guild) guild.shard.send(payload);
   },
+  trackPartial: ["title", "duration", "requester", "duration"],
 });
 
 ["command_handler", "event_handler"].forEach((handler) =>
