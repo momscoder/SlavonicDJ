@@ -70,7 +70,7 @@ module.exports = {
         return message.reply("Ошибка! `NO_MATCHES`");
       case "TRACK_LOADED":
         res.tracks[0].title = song.title;
-        //res.tracks[0].author = song.author;
+        res.tracks[0].requester = message.author;
 
         player.queue.add(res.tracks[0]);
 

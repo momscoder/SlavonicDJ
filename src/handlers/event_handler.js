@@ -10,7 +10,7 @@ module.exports = (client, Discord) => {
       const event = require(`../events/${dir}/${file}`);
       const event_name = file.split(".")[0];
       if (isErela) {
-        client.manager.on(event_name, event);
+        client.manager.on(event_name, event.bind(null, client));
       } else {
         client.on(event_name, event.bind(null, Discord, client));
       }
