@@ -68,8 +68,7 @@ const vk_player = async (guild, song) => {
   }
 
   song_queue.connection
-    .play(song.url)
-    //.play(stream, { seek: 0, volume: 0.5 })
+    .play(song.url, { seek: 0, volume: 0.4 })
     .on("finish", () => {
       song_queue.songs.shift();
       vk_player(guild, song_queue.songs[0]);
