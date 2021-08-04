@@ -25,7 +25,12 @@ module.exports = {
       if (!args.length) return message.channel.send("...");
       let song = {};
 
-      song = await vkdl.findByTitle(args.join(" "));
+      if (args[0] === "--id") {
+        song = await vkdl.findById(args[1]);
+      } else {
+        song = await vkdl.findByTitle(args.join(" "));
+      }
+
       if (!song) return message.channel.send("Ничего не найдено");
 
       if (!server_queue) {
