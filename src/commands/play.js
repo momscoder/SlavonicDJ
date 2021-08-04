@@ -39,6 +39,8 @@ module.exports = {
     }
 
     if (player.paused) player.pause(false);
+    if (message.client.timers.has(message.guild.id))
+      clearTimeout(message.client.timers.get(message.guild.id));
 
     if (!args.length) return;
 
