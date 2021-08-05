@@ -24,10 +24,12 @@ module.exports = {
     message.client.timers.set(
       message.guild.id,
       setTimeout(() => {
-        message.channel
-          .send(`**Слишком долгое время ожидания, отключаюсь.**`)
-          .then((msg) => msg.delete({ timeout: 15000 }));
-        if (player) player.destroy();
+        if (player) {
+          message.channel
+            .send(`**Слишком долгое время ожидания, отключаюсь.**`)
+            .then((msg) => msg.delete({ timeout: 15000 }));
+          player.destroy();
+        }
       }, 600000)
     );
 
