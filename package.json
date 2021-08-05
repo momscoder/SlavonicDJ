@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/profile-picture-team/SlavonicDJ#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "erela.js": "^2.3.3",
