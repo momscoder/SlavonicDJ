@@ -13,8 +13,8 @@ module.exports = (Discord, client, oldState, newState) => {
         if (player) {
           oldState.guild.channels.cache
             .get(player.textChannel)
-            .send(`**Слишком долгое время ожидания, отключаюсь.**`)
-            .then((msg) => msg.delete({ timeout: 15000 }));
+            .send(`**Слишком долгое время ожидания, отключаюсь.**`);
+          //TODO: catch for messages
           player.destroy();
         }
       }, 300000)
