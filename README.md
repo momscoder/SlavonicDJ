@@ -8,7 +8,7 @@
 
 # Настройка
 ### env
-Переиминуйте файл **`.env.example`** в **`.env`** (если не видите файл, возможно, стоит включить отображение скрытых файлов проводнике)
+Переименуйте файл **`.env.example`** в **`.env`** (если не видите файл, возможно, стоит включить отображение скрытых файлов проводнике)
 
 Теперь про параметры:
  * DS_TOKEN - [токен вашего дискорд бота](https://discord.com/developers/docs/intro#bots-and-apps)
@@ -18,7 +18,9 @@
 
 ### Получение вк токена
 Получить токен можно по [ссылке](https://oauth.vk.com/authorize?client_id=6121396&scope=offline&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1&redirect_uri=close.html), как авторизируетесь в ссылке найдите параметр `access_token`
+
 **Токен этот никому не передавать ради вашей же безопасности**
+
 *Токен бессрочный*
 
 P.S.
