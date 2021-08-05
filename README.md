@@ -1,7 +1,7 @@
 # Комплит инстал гайд
 0. скачать данный репозиторий
 1. установить [ноду](https://nodejs.org/)
-2. установить (настроить и запустить) [Lavalink](https://github.com/freyacodes/Lavalink)
+2. установить (настроить и запустить) [Lavalink](https://github.com/freyacodes/Lavalink#server-configuration)
 3. установить зависимости через `npm i` в папке проекта
 
 **Раздел [Настройка](#настройка) обязателен к посещению**
