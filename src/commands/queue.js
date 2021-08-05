@@ -9,6 +9,7 @@ module.exports = {
     if (!player) return message.reply("Cейчас ничего не играет.");
 
     const queue = player.queue;
+
     let answer = "";
 
     const tracks = queue.slice(0, 10);
@@ -21,6 +22,8 @@ module.exports = {
     if (tracks.length)
       answer += tracks.map((track, i) => `${++i}) ${track.title}`).join("\n");
 
-    return message.channel.send("```" + answer + "```");
+    return message.channel.send(
+      "```" + (answer.length ? answer : " 0_0 Очередь пуста") + "```"
+    );
   },
 };

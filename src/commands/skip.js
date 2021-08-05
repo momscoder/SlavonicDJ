@@ -21,8 +21,6 @@ module.exports = {
     const { title } = player.queue.current;
 
     player.stop();
-    return message.channel
-      .send(`Песня **${title}** пропущена.`)
-      .then((msg) => msg.delete({ timeout: 15000 }));
+    return message.channel.send(`Песня **${title}** пропущена.`);
   },
 };
