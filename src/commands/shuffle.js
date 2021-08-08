@@ -15,7 +15,7 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    if (!player.queue.current) return message.reply("Очередь пуста.");
+    if (!player.queue.current) return message.reply("``` 0_0 Очередь пуста```");
 
     player.queue.shuffle();
     message.channel.send(`Очередь была перемешана [${message.author}]`);
