@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const Discord = require("discord.js");
-const { Manager } = require("erela.js");
+const { Manager } = require("erela.js-dj");
 
 const nodes = [
   {
