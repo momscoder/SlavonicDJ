@@ -3,7 +3,7 @@ const vkdl = require("../services/vkdl");
 module.exports = {
   name: "play",
   aliases: ["p", "pl"],
-  description: "Music command",
+  description: "Ищет музыку и добавляет её в очередь",
   async execute(message, args) {
     //standard checks
     const voice_channel = message.member.voice.channel;

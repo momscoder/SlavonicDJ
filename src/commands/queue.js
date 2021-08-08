@@ -3,8 +3,8 @@ const Duration = require("luxon").Duration;
 module.exports = {
   name: "queue",
   aliases: ["q"],
-  description: "Music command",
-  async execute(message, args) {
+  description: "Показывает очередь",
+  async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Cейчас ничего не играет.");
 

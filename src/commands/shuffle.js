@@ -1,7 +1,7 @@
 module.exports = {
   name: "shuffle",
   aliases: ["sh", "random"],
-  description: "Music command",
+  description: "Перемешивает очередь",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");

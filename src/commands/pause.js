@@ -1,7 +1,7 @@
 module.exports = {
   name: "pause",
   aliases: ["pa", "ps"],
-  description: "Music command",
+  description: "Ставит трек на паузу/возобновляет трек с паузы",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");

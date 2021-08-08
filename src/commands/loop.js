@@ -1,7 +1,7 @@
 module.exports = {
   name: "loop",
   aliases: ["l", "repeat"],
-  description: "Music command",
+  description: "Зациклиливает/разцикливает плейлист",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");

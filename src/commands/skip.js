@@ -1,7 +1,7 @@
 module.exports = {
   name: "skip",
   aliases: ["s"],
-  description: "Music command",
+  description: "Пропускает один трек",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Cейчас ничего не играет");
