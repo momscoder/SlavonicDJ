@@ -29,7 +29,7 @@ module.exports = {
 
     if (
       (!args.length && !player.paused && player.queue.pointer !== null) ||
-      (player.queue.pointer === null && !player.queue.length)
+      (!args.length && player.queue.pointer === null && !player.queue.length)
     ) {
       return; //message.channel.send("...");
     }
