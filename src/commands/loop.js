@@ -1,7 +1,7 @@
 module.exports = {
-  name: "stop",
-  aliases: ["st"],
-  description: "Останавливает бота",
+  name: "loop",
+  aliases: ["l", "repeat"],
+  description: "Зациклиливает/разцикливает плейлист",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");
@@ -15,7 +15,15 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    player.destroy();
-    message.channel.send("Отключаюсь...");
+    if (!player.queue.length)
+      return message.channel.send("```0_0 Очередь пуста```");
+
+    if (player.queueRepeat) {
+      player.setQueueRepeat(false);
+      return message.channel.send("Очередь больше не зацикливается!");
+    } else {
+      player.setQueueRepeat(true);
+      return message.channel.send("Зациклил очередь!");
+    }
   },
 };

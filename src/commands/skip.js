@@ -1,7 +1,7 @@
 module.exports = {
   name: "skip",
   aliases: ["s"],
-  description: "Music command",
+  description: "Пропускает один трек",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Cейчас ничего не играет");
@@ -16,7 +16,7 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    if (!player.queue.current) return message.reply("``` 0_0 Очередь пуста```");
+    if (!player.queue.current) return message.channel.send("Нечего пропускать");
 
     const { title } = player.queue.current;
 

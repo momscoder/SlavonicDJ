@@ -1,7 +1,7 @@
 module.exports = {
   name: "shuffle",
-  aliases: ["sh"],
-  description: "Music command",
+  aliases: ["sh", "random"],
+  description: "Перемешивает очередь",
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");
@@ -15,9 +15,14 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    if (!player.queue.current) return message.reply("``` 0_0 Очередь пуста```");
+    if (!player.queue.length) return message.reply("```0_0 Очередь пуста```");
 
     player.queue.shuffle();
+
+    player.queue.pointer = 0;
+    player.queue.current = player.queue[0];
+    player.play();
+
     message.channel.send(`Очередь была перемешана [${message.author}]`);
   },
 };

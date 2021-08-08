@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const Discord = require("discord.js");
-const { Manager } = require("erela.js");
+const { Manager } = require("erela.js-dj");
 
 const nodes = [
   {
@@ -15,6 +15,8 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.timers = new Discord.Collection();
+
+client.prefix = process.env.DS_PREFIX;
 
 client.manager = new Manager({
   nodes,

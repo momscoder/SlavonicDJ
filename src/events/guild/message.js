@@ -1,7 +1,5 @@
-require("dotenv").config();
-
 module.exports = (Discord, client, message) => {
-  const prefix = process.env.DS_PREFIX;
+  const prefix = client.prefix;
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).split(/ +/);
