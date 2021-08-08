@@ -27,8 +27,11 @@ module.exports = {
       selfDeafen: true,
     });
 
-    if (!args.length && !player.paused) {
-      return message.channel.send("...");
+    if (
+      (!args.length && !player.paused && player.queue.pointer !== null) ||
+      (player.queue.pointer === null && !player.queue.length)
+    ) {
+      return; //message.channel.send("...");
     }
 
     if (player.state !== "CONNECTED") player.connect();
@@ -41,6 +44,12 @@ module.exports = {
     if (player.paused) player.pause(false);
     if (message.client.timers.has(message.guild.id))
       clearTimeout(message.client.timers.get(message.guild.id));
+
+    if (!args.length && player.queue.length && player.queue.pointer === null) {
+      player.queue.pointer = 0;
+      player.queue.current = player.queue[0];
+      player.play();
+    }
 
     if (!args.length) return;
 
@@ -77,8 +86,7 @@ module.exports = {
 
         player.queue.add(res.tracks[0]);
 
-        if (!player.playing && !player.paused && !player.queue.size)
-          player.play();
+        if (!player.playing && !player.paused) player.play();
 
         return message.channel.send(
           `Песня **${res.tracks[0].title}** добавлена в очередь!`
