@@ -16,10 +16,11 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    if (!player.queue.current) return message.reply("Очередь пуста");
+    if (!player.queue.current) return message.reply("``` 0_0 Очередь пуста```");
 
     const { title } = player.queue.current;
 
+    if (!player.playing) player.playing = true;
     player.stop();
     return message.channel.send(`Песня **${title}** пропущена.`);
   },

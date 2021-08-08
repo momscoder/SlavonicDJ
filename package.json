@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/profile-picture-team/SlavonicDJ.git"
+    "url": "git+https://github.com/momscoder/SlavonicDJ.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/profile-picture-team/SlavonicDJ/issues"
+    "url": "https://github.com/momscoder/SlavonicDJ/issues"
   },
-  "homepage": "https://github.com/profile-picture-team/SlavonicDJ#readme",
+  "homepage": "https://github.com/momscoder/SlavonicDJ#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
