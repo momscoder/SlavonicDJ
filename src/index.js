@@ -16,6 +16,8 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.timers = new Discord.Collection();
 
+client.prefix = process.env.DS_PREFIX;
+
 client.manager = new Manager({
   nodes,
   send: (id, payload) => {
