@@ -20,7 +20,7 @@
   "dependencies": {
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "erela.js-dj": "^2.3.3-dj",
+    "erela.js-dj": "^2.3.3-dj.1",
     "luxon": "^2.0.1",
     "node-fetch": "^2.6.1"
   },
