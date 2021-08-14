@@ -2,6 +2,7 @@ module.exports = {
   name: "pause",
   aliases: ["pa", "ps"],
   description: "Ставит трек на паузу/возобновляет трек с паузы",
+  cooldown: 2,
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player?.queue.current) return message.reply("Сейчас ничего не играет");

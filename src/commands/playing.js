@@ -4,6 +4,7 @@ module.exports = {
   name: "playing",
   aliases: ["now"],
   description: "Показывает, что сейчас играет",
+  cooldown: 2,
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player?.queue.current) return message.reply("Cейчас ничего не играет");

@@ -4,6 +4,7 @@ module.exports = {
   name: "help",
   aliases: ["h", "info", "commands"],
   description: "Показывает справку",
+  cooldown: 1,
   async execute(message, args) {
     const prefix = message.client.prefix;
 

@@ -2,6 +2,7 @@ module.exports = {
   name: "skip",
   aliases: ["s"],
   description: "Пропускает n треков (по умолчанию 1)",
+  cooldown: 2,
   async execute(message, args) {
     const player = message.client.manager.get(message.guild.id);
     if (!player?.queue.current) return message.reply("Cейчас ничего не играет");

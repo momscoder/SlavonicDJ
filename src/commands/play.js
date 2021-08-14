@@ -4,6 +4,7 @@ module.exports = {
   name: "play",
   aliases: ["p", "pl"],
   description: "Ищет музыку и добавляет её в очередь",
+  cooldown: 2,
   async execute(message, args) {
     //standard checks
     const voice_channel = message.member.voice.channel;

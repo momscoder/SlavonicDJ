@@ -2,6 +2,7 @@ module.exports = {
   name: "stop",
   aliases: ["st"],
   description: "Останавливает бота",
+  cooldown: 2,
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");
