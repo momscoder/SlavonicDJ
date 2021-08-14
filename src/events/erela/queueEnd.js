@@ -10,7 +10,7 @@ module.exports = (client, player) => {
           //.catch(console.log());
           player.destroy();
         }
-      }, 60000)
+      }, 300000)
     );
     if (player.prev_start_msg?.deletable) {
       player.prev_start_msg.delete().catch(console.error);
