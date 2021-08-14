@@ -35,13 +35,6 @@ module.exports = {
       return; //message.channel.send("...");
     }
 
-    if (player.state !== "CONNECTED") player.connect();
-
-    if (!player.voiceChannel) {
-      player.setVoiceChannel(voice_channel.id);
-      player.connect();
-    }
-
     if (player.paused) player.pause(false);
     if (message.client.timers.has(message.guild.id))
       clearTimeout(message.client.timers.get(message.guild.id));
@@ -87,7 +80,16 @@ module.exports = {
 
         player.queue.add(res.tracks[0]);
 
-        if (!player.playing && !player.paused) player.play();
+        if (!player.playing && !player.paused) {
+          if (player.state !== "CONNECTED") player.connect();
+
+          if (!player.voiceChannel) {
+            player.setVoiceChannel(voice_channel.id);
+            player.connect();
+          }
+
+          player.play();
+        }
 
         return message.channel.send(
           `Песня **${res.tracks[0].title}** добавлена в очередь!`
