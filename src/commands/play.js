@@ -2,9 +2,11 @@ const vkdl = require("../services/vkdl");
 
 module.exports = {
   name: "play",
-  aliases: ["p", "pl"],
+  aliases: ["p", "pl", "add", "a"],
   description: "Ищет музыку и добавляет её в очередь",
   cooldown: 2,
+  usage: "<song name / --id song content id>",
+  examples: ["Bad Apple!!", "--id -2001239486_66239486"],
   async execute(message, args) {
     //standard checks
     const voice_channel = message.member.voice.channel;
