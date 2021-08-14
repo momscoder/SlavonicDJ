@@ -4,6 +4,7 @@ module.exports = {
   name: "help",
   aliases: ["h", "info", "commands"],
   description: "Показывает справку",
+  cooldown: 1,
   async execute(message, args) {
     const prefix = message.client.prefix;
 
@@ -22,10 +23,18 @@ module.exports = {
     if (!command) return message.reply("Такой команды нет!");
 
     //TODO: make it more informative (usage, examples, etc)
+    const examples = command.examples;
+    const usage = command.usage;
     return message.channel.send(
-      `**${prefix}${command.name}**: ${
-        command.description
-      }.\nТакже может быть вызвана при помощи: ${command.aliases.join(", ")}.`
+      `**${prefix}${command.name}**: ${command.description}.\n${
+        usage ? `Параметры: ${prefix}${command.name} ${usage}\n` : ""
+      }${
+        examples
+          ? `Например: ${examples
+              .map((s) => `${prefix}${command.name} ${s}`)
+              .join(", ")}\n`
+          : ""
+      }Также может быть вызвана при помощи: ${command.aliases.join(", ")}.`
     );
   },
 };

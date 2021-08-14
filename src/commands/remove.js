@@ -1,7 +1,7 @@
 module.exports = {
-  name: "skip",
-  aliases: ["s"],
-  description: "Пропускает n треков (по умолчанию 1)",
+  name: "remove",
+  aliases: ["r", "delete", "del"],
+  description: "Удаляет трек с номером n",
   cooldown: 2,
   async execute(message, args) {
     const player = message.client.manager.get(message.guild.id);
@@ -17,15 +17,20 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    const { title } = player.queue.current;
+    const queue = player.queue;
 
-    if (!player.playing) player.playing = true;
-    if (args.length && Number.isInteger(+args[0]) && +args[0] > 1) {
-      player.queue.pointer += +args[0] - 1;
-      player.stop();
-      return message.channel.send(`Пропущено **${args[0]}** песен`);
-    }
-    player.stop();
-    return message.channel.send(`Песня **${title}** пропущена.`);
+    if (!args.length) return;
+    let n = parseInt(args[0]);
+
+    if (!isNaN(n) && n > 0 && n <= queue.length) {
+      n--;
+      if (queue.pointer >= n) {
+        if (queue.pointer === n) player.stop();
+        queue.pointer--;
+      }
+      queue.remove(n);
+    } else return;
+
+    return message.channel.send("Удалено");
   },
 };

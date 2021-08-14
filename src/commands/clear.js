@@ -2,6 +2,7 @@ module.exports = {
   name: "clear",
   aliases: ["cl"],
   description: "Очищает очередь",
+  cooldown: 5,
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player) return message.reply("Сейчас ничего не играет");

@@ -1,9 +1,11 @@
+const Duration = require("luxon").Duration;
+
 module.exports = {
-  name: "skip",
-  aliases: ["s"],
-  description: "Пропускает n треков (по умолчанию 1)",
+  name: "playing",
+  aliases: ["now"],
+  description: "Показывает, что сейчас играет",
   cooldown: 2,
-  async execute(message, args) {
+  async execute(message) {
     const player = message.client.manager.get(message.guild.id);
     if (!player?.queue.current) return message.reply("Cейчас ничего не играет");
 
@@ -17,15 +19,13 @@ module.exports = {
     if (channel.id !== player.voiceChannel)
       return message.reply("Вы находитесь не в том голосовом канале...");
 
-    const { title } = player.queue.current;
-
-    if (!player.playing) player.playing = true;
-    if (args.length && Number.isInteger(+args[0]) && +args[0] > 1) {
-      player.queue.pointer += +args[0] - 1;
-      player.stop();
-      return message.channel.send(`Пропущено **${args[0]}** песен`);
-    }
-    player.stop();
-    return message.channel.send(`Песня **${title}** пропущена.`);
+    const { title, requester, duration } = player.queue.current;
+    return message.channel.send(
+      `Сейчас ${
+        player.paused ? "на паузе" : "играет"
+      } : *${title}* (-${Duration.fromMillis(
+        duration - player.position
+      ).toFormat("mm:ss")}) [${requester}] `
+    );
   },
 };

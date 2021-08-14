@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-const fetch = require("node-fetch");
+const { fetchBuilder, MemoryCache } = require("node-fetch-cache");
+const fetch = fetchBuilder.withCache(new MemoryCache({ ttl: 1200000 })); // 20 min
 
 exports.findByTitle = async function (title) {
   const song = await get(title);
@@ -14,11 +15,14 @@ exports.findById = async function (id) {
 };
 
 async function get(title) {
+  //let t1 = performance.now();
   const response = await fetch(
     `https://api.vk.com/method/audio.search?access_token=${
       process.env.VK_TOKEN
     }&q="${encodeURIComponent(title)}"&count=1&v=5.95`
   );
+  //let t2 = performance.now();
+  //console.log(t2 - t1);
   const json = await response.json();
   return {
     title: json.response?.items?.[0]?.title,

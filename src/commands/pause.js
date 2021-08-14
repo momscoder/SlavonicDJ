@@ -2,9 +2,10 @@ module.exports = {
   name: "pause",
   aliases: ["pa", "ps"],
   description: "Ставит трек на паузу/возобновляет трек с паузы",
+  cooldown: 2,
   async execute(message) {
     const player = message.client.manager.get(message.guild.id);
-    if (!player) return message.reply("Сейчас ничего не играет");
+    if (!player?.queue.current) return message.reply("Сейчас ничего не играет");
 
     const { channel } = message.member.voice;
 
@@ -19,6 +20,7 @@ module.exports = {
     if (player.paused) {
       if (message.client.timers.has(message.guild.id))
         clearTimeout(message.client.timers.get(message.guild.id));
+      message.channel.send("Снимаю с паузы");
       return player.pause(false);
     }
     message.client.timers.set(
@@ -33,6 +35,7 @@ module.exports = {
       }, 600000)
     );
 
+    message.channel.send("Ставлю на паузу");
     return player.pause(true);
   },
 };
