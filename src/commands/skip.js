@@ -20,7 +20,7 @@ module.exports = {
     const { title } = player.queue.current;
 
     if (!player.playing) player.playing = true;
-    if (args.length && Number.isInteger(+args[0]) && +args[0] !== 1) {
+    if (args.length && Number.isInteger(+args[0]) && +args[0] > 1) {
       player.queue.pointer += +args[0] - 1;
       player.stop();
       return message.channel.send(`Пропущено **${args[0]}** песен`);
